@@ -52,7 +52,7 @@ public class SpringHibernateConfig {
 
         // Bind one session per request : configures SessionFactory.useCurrentSession()
         hibernateProperties.setProperty(
-                "hibernate.current_session_context_class", "thread");
+                "current_session_context_class", "thread");
 
         // Disable the second-level cache
         hibernateProperties.setProperty(
