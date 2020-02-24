@@ -1,6 +1,5 @@
 package org.epsi.b3.simplewebapp.products;
 
-import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,19 +10,13 @@ import java.util.zip.DataFormatException;
  * An entity to model the view of a product.
  */
 @Entity
-@Table(name = "Products")
+//@Table(name = "Products") // TODO : not working
 public class Product {
 
     @Id
     private Integer id;
-
-    @Basic(optional = false)
     private String code;
-
-    @Basic(optional = false)
     private String name;
-
-    @Basic(optional = false)
     private Float price;
 
     public Product() {
