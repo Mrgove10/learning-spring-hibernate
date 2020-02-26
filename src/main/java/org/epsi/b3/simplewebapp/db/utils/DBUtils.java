@@ -1,8 +1,11 @@
 package org.epsi.b3.simplewebapp.db.utils;
 
+import org.epsi.b3.simplewebapp.HibernateUtil;
 import org.epsi.b3.simplewebapp.products.Product;
 import org.epsi.b3.simplewebapp.users.Gender;
 import org.epsi.b3.simplewebapp.users.UserAccount;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,7 +21,11 @@ public class DBUtils {
             String userName,
             String password
     ) throws SQLException {
- 
+
+        Session session  = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+
+
         String sql = "Select a.idUser, a.userName, a.password, a.gender from USER_ACCOUNT a " //
                 + " where a.userName = ? and a.password= ?";
  
@@ -81,8 +88,8 @@ public class DBUtils {
         return list;
     }
  
-    public static Product findProduct(Connection conn, String code) throws SQLException {
-        String sql = "Select a.code, a.name, a.price from PRODUCT a where a.code=?";
+    public static Product findProduct(/*Connection conn,*/ String code) throws SQLException {
+       /* String sql = "Select a.code, a.name, a.price from PRODUCT a where a.code=?";
  
         PreparedStatement pstm = conn.prepareStatement(sql);
         pstm.setString(1, code);
@@ -95,7 +102,13 @@ public class DBUtils {
             Product product = new Product(code, name, price);
             return product;
         }
-        return null;
+        return null;*/
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.find(Class.Product);
+        session.getTransaction().commit();
+        HibernateUtil.shutdown();
+
     }
  
     public static void updateProduct(Connection conn, Product product) throws SQLException {
@@ -109,8 +122,8 @@ public class DBUtils {
         pstm.executeUpdate();
     }
  
-    public static void insertProduct(Connection conn, Product product) throws SQLException {
-        String sql = "Insert into PRODUCT(code, name,price) values (?,?,?)";
+    public static void insertProduct(/*Connection conn,*/ Product product) throws SQLException {
+        /*String sql = "Insert into PRODUCT(code, name,price) values (?,?,?)";
  
         PreparedStatement pstm = conn.prepareStatement(sql);
  
@@ -118,17 +131,47 @@ public class DBUtils {
         pstm.setString(2, product.getName());
         pstm.setFloat(3, product.getPrice());
  
-        pstm.executeUpdate();
+        pstm.executeUpdate();*/
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.save(product);
+            tx.commit();
+        }
+        catch (Exception e) {
+            if (tx!=null) tx.rollback();
+            throw e;
+        }
+        finally {
+            HibernateUtil.shutdown();
+        }
     }
  
-    public static void deleteProduct(Connection conn, String code) throws SQLException {
-        String sql = "Delete From PRODUCT where code= ?";
+    public static void deleteProduct(/*Connection conn,*/ String code) throws SQLException {
+       /* String sql = "Delete From PRODUCT where code= ?";
  
         PreparedStatement pstm = conn.prepareStatement(sql);
  
         pstm.setString(1, code);
  
-        pstm.executeUpdate();
+        pstm.executeUpdate();*/
+
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            session.delete(findProduct(code));
+            tx.commit();
+        }
+        catch (Exception e) {
+            if (tx!=null) tx.rollback();
+            throw e;
+        }
+        finally {
+            HibernateUtil.shutdown();
+        }
     }
  
 }
