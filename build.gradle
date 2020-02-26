@@ -33,4 +33,6 @@ dependencies {
 
     // Junit framework for unit testing the application
     testImplementation 'junit:junit:4.12'
+
+    compile "org.springframework:spring-webmvc:${springframeworkVersion}"
 }
