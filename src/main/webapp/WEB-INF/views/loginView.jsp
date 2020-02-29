@@ -17,28 +17,28 @@
       <p style="color: red;">${errorString}</p>
  
  
-      <form method="POST" action="${pageContext.request.contextPath}/login">
+      <form:form method="POST" action="${pageContext.request.contextPath}/login">
          <table border="0">
             <tr>
-               <td>User Name</td>
-               <td><input type="text" name="userName" value= "${user.userName}" /> </td>
+               <td><form:label path="userName">User Name</form:label></td>
+               <td><form:input type="text" path="userName" value= "${user.userName}" /> </td>
             </tr>
             <tr>
-               <td>Password</td>
-               <td><input type="text" name="password" value= "${user.password}" /> </td>
+               <td><form:label path="password">Password</form:label></td>
+               <td><form:input type="text" path="password" value= "${user.password}" /> </td>
             </tr>
             <tr>
-               <td>Remember me</td>
-               <td><input type="checkbox" name="rememberMe" value= "Y" /> </td>
+               <td><form:label path="rememberMe">Remember me</form:label></td>
+               <td><form:input type="checkbox" path="rememberMe" value= "Y" /> </td>
             </tr>
             <tr>
                <td colspan ="2">
-                  <input type="submit" value= "Submit" />
+                  <form type="submit" value= "Submit" />
                   <a href="${pageContext.request.contextPath}/">Cancel</a>
                </td>
             </tr>
          </table>
-      </form>
+      </form:form>
  
       <p style="color:blue;">User Name: john, password: doe or alice/bob</p>
  

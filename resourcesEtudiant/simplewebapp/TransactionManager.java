@@ -11,6 +11,4 @@ public class TransactionManager {
         transactionManager.setSessionFactory(sessionFactory().getObject());
         return transactionManager;
     }
-
-
 }

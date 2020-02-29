@@ -24,15 +24,15 @@
     <table border="0">
         <tr>
             <td><form:label path="code">Code</form:label></td>
-            <td><form:input type="text" name="code" value="${product.code}" path="code"/></td>
+            <td><form:input type="text" path="code" value="${product.code}"/></td>
         </tr>
         <tr>
             <td><form:label path="name">Name</form:label></td>
-            <td><form:input type="text" name="name" value="${product.name}" path="name"/></td>
+            <td><form:input type="text" path="name" value="${product.name}"/></td>
         </tr>
         <tr>
             <td><form:label path="price">Price</form:label></td>
-            <td><form:input type="text" name="price" value="${product.price}" path="price"/></td>
+            <td><form:input type="text" path="price" value=" ${product.price}"/></td>
         </tr>
         <tr>
             <td colspan="2">
