@@ -57,7 +57,7 @@ public class CookieFilter implements Filter {
                     .ifPresent( userName -> {
                         try {
                             try (final Connection conn = ConnectionUtils.tryAndGetConnection()) {
-                                UserAccount userAccount = DBUtils.findUser(conn, userName);
+                                UserAccount userAccount = DBUtils.findUser(userName);
                                 conn.commit();
                                 if (userAccount != null) {
                                     HttpUtils.storeLoginedUser(session, UserInfo.fromAccount(userAccount));

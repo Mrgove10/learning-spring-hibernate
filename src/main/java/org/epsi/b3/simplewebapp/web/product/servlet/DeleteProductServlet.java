@@ -37,7 +37,7 @@ public class DeleteProductServlet extends HttpServlet {
  
         try {
             try (Connection conn = ConnectionUtils.tryAndGetConnection()) {
-                DBUtils.deleteProduct(conn, code);
+                DBUtils.deleteProduct(code);
                 conn.commit();
             }
         } catch (SQLException e) {

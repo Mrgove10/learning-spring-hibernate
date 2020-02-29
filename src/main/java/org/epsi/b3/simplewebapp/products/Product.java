@@ -15,8 +15,6 @@ import java.util.zip.DataFormatException;
 public class Product {
 
     @Id
-    private Integer id;
-
     @Basic(optional = false)
     private String code;
 

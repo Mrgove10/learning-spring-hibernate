@@ -4,8 +4,10 @@ import org.epsi.b3.simplewebapp.HibernateUtil;
 import org.epsi.b3.simplewebapp.products.Product;
 import org.epsi.b3.simplewebapp.users.Gender;
 import org.epsi.b3.simplewebapp.users.UserAccount;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -21,8 +23,7 @@ public class DBUtils {
             String userName,
             String password
     ) {
-
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        /*Session session = HibernateUtil.getSessionFactory().openSession();
         session.beginTransaction();
 
 
@@ -42,7 +43,25 @@ public class DBUtils {
             user.setGender(Gender.values()[rs.getInt("gender")]);
             return user;
         }
-        return null;
+        return null;*/
+        UserAccount p;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Criteria criteria = session.createCriteria(UserAccount.class);
+            p = (UserAccount) criteria
+                    .add(Restrictions.eq("userName", userName))
+                    .add(Restrictions.eq("password", password))
+                    .uniqueResult();
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) tx.rollback();
+            throw e;
+        } finally {
+            HibernateUtil.shutdown();
+        }
+        return p;
     }
 
     public static UserAccount findUser(/*Connection conn,*/ String userName) {
@@ -63,12 +82,13 @@ public class DBUtils {
         }
         return null;*/
 
-        Product p;
+        UserAccount p;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            p = session.get(Product.class, code);
+            Criteria criteria = session.createCriteria(UserAccount.class);
+            p = (UserAccount) criteria.add(Restrictions.eq("userName", userName)).uniqueResult();
             tx.commit();
         } catch (Exception e) {
             if (tx != null) tx.rollback();

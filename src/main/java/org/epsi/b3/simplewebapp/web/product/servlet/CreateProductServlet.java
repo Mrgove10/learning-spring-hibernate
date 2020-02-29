@@ -74,7 +74,7 @@ public class CreateProductServlet extends HttpServlet {
         if (errorString == null) {
             try {
                 try (Connection conn = ConnectionUtils.tryAndGetConnection()) {
-                        DBUtils.insertProduct(conn, product);
+                        DBUtils.insertProduct(product);
                         conn.commit();
                 }
             } catch (SQLException e) {

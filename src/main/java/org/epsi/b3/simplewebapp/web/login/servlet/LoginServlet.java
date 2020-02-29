@@ -69,7 +69,7 @@ public class LoginServlet extends HttpServlet {
 
             // Search for the user in the DB
             try(final Connection conn = ConnectionUtils.tryAndGetConnection()) {
-                user = DBUtils.findUser(conn, loginInfo.getUserName(), loginInfo.getPassword());
+                user = DBUtils.findUser(loginInfo.getUserName(), loginInfo.getPassword());
                 conn.commit();
             }
 

@@ -44,7 +44,7 @@ public class EditProductServlet extends HttpServlet {
 
         try {
             try(final Connection conn = ConnectionUtils.tryAndGetConnection()) {
-                final Product product = DBUtils.findProduct(conn, code);
+                final Product product = DBUtils.findProduct(code);
                 conn.commit();
                 if (product != null) {
                     productViewBean = ProductUtils.toViewModel(product);
@@ -90,7 +90,7 @@ public class EditProductServlet extends HttpServlet {
         try {
             Product product = ProductUtils.parseFromView(viewBean);
             try(final Connection conn = ConnectionUtils.tryAndGetConnection()) {
-                DBUtils.updateProduct(conn, product);
+                DBUtils.updateProduct(product);
                 conn.commit();
             }
         } catch (NumberFormatException e) {

@@ -40,7 +40,7 @@ public class ProductListServlet extends HttpServlet {
         List<ProductViewBean> list = null;
         try {
             try (Connection conn = ConnectionUtils.tryAndGetConnection()) {
-                list = DBUtils.queryProduct(conn)
+                list = DBUtils.queryProduct()
                 .stream()
                 .map(ProductUtils::toViewModel)
                 .collect(Collectors.toList());
