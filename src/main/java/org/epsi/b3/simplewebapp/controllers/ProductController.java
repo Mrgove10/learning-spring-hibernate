@@ -1,5 +1,6 @@
 package org.epsi.b3.simplewebapp.controllers;
 
+import org.epsi.b3.simplewebapp.products.Product;
 import org.epsi.b3.simplewebapp.users.UserAccount;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -28,11 +29,12 @@ public class ProductController {
     /**
      * gets the instance of an object
      *
-     * @param ua
+     * @param p
      * @return
      */
-    @RequestMapping(path = "/createMyEntity", method = {GET, POST})
-    public Object myActionMethod(@ModelAttribute UserAccount ua) {
+    @RequestMapping(path = "/productList", method = {GET, POST})
+    public Object productListMethode(@ModelAttribute Product p) {
+        System.out.println(p.getName());
         return null;
     }
 
