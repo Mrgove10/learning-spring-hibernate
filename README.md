@@ -26,4 +26,8 @@ Les classe principale sont :
 - MainWebAppInitializer : classe de lancement de l'apllication qui met en place toute les configuration
 - DBUtils : classe qui gere les transactions avec la base de donnée
 
-separer tout cela en plusieur classe ameliore l'architechture car elle permet d'avoir duc ode plus simple et de segmenter son application , bien mieu pour la maintenance
+Separer tout cela en plusieur classe ameliore l'architechture car elle permet d'avoir duc ode plus simple et de segmenter son application , bien mieu pour la maintenance
+
+### diagram
+
+void [diagrame.txt](diagrame.txt)

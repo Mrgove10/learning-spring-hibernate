@@ -1,0 +1,38 @@
+                             +-------------------------+               +--------------------------------------+
+                             |                         |               |                                      |
+                             | requete de l'utilsateur +<--------------+     Renvoie de la vue avec le        +<-------------------+
+                             |                         |               |     le model remplis a l'utilisateur |                    |
+                             +-----------+-------------+               |                                      |                    |
+                                         |                             +--------------------------------------+                    |
+                                         |                                                                                         |
+                                         |  GET, POST, ...                                                                         |
+                                         |                                                                                         |
+                                         v                                                                                         |
+                       +-----------------+-----------------------------+                                                           |
+                       |                                               |                                                           |
+                       | Appel une requet des controlleurs en fonction |    ProductController, UserAccountController               |
+                       | de la clase et de la route                    |                                                           |
+                       |                                               |                                                           |
+                       +-----------------+-----------------------------+                                                           |
+                                         |                                                                                         |
+                                         |                                                                                         |
+                                         |   Lance Hibernate                                                                       |
+                                         |                                                                                         |
+                                         |                                                                                         |
++----------------------------------------+------------------------------------------------------+                                  |
+|                                Hibernate                                                      |                                  |
+|                                                                                               |                                  |
+|                                                                                               |                                  |
+|                                                                                               |                                  |
+|   Creation d'une session  +-------> Effectue la requete   +----->  Ferme la session           |                                  |
+|                                     dans la BDD                                               |                                  |
+|                                                                                               |                                  |
+|                                                                            +                  |                                  |
+|                                                                            |                  |                                  |
+|        Note : Hibernante utilise les Models                                |                  |           +----------------------+------------+
+|        pour faire ces requete.                                             |                  |           |                                   |
+|                                                                            v                  |           |   Affectation du resultat a la    |
+|                                                                       Renvoie le resultat +-------------> |   Vue grace au model              |
+|                                                                                               |           |                                   |
+|                                                                                               |           +-----------------------------------+
++-----------------------------------------------------------------------------------------------+
