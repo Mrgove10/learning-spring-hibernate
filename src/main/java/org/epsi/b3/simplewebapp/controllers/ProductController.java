@@ -14,52 +14,42 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 public class ProductController {
-    /**
-     * Gets the parameters froma url
-     *
-     * @param paramA
-     * @return
-     */
-    @RequestMapping(path = "/createMyEntity", method = {GET, POST})
-    public Object myUrlMethod(@RequestParam String paramA) {
 
+    @RequestMapping(path = "/createProduct", method = {GET, POST})
+    public ModelAndView CreateProductMethod (@ModelAttribute Product p) {
+        // TODO : implemente me
+        // On prend le produit renvoyer par le formulaire
+        // On cree un nouveau bean
+        // On met se bean en base de donne en utilisant la class DBUtils
+        // on met le novelle objet dans la vue
+        // on afiche la vue avec ce nouvelle objet dedans
         return null;
     }
 
-    /**
-     * gets the instance of an object
-     *
-     * @param p
-     * @return
-     */
-    @RequestMapping(path = "/productList", method = {GET, POST})
-    public Object productListMethode(@ModelAttribute Product p) {
-        System.out.println(p.getName());
+    @RequestMapping(path = "/deleteProduct", method = { POST})
+    public Object DeleteProductMethod (@RequestParam String id) {
+        // TODO : implemente me
+        // On cherche l'id du produit qui nous est encvyer dfans les parametre .
+        // on recupere le produit avec DBUtils
+        // on le suprime avec DBUtils
         return null;
     }
 
-    /**
-     * gets teh complet model
-     *
-     * @param fullViewModel
-     * @return
-     */
-    @RequestMapping(path = "/createMyEntity", method = {GET, POST})
-    public Object myActionMethod(ModelMap fullViewModel) {
+    @RequestMapping(path = "/editProduct", method = {GET, POST})
+    public Object EditProductMethod (@RequestParam String id) {
+        // TODO : implemente me
+        // On cherche l'id du produit qui nous est encvyer dfans les parametre .
+        // on recupere le produit avec DBUtils
+        // on le suprime avec DBUtils
         return null;
     }
 
-
-    /**
-     * Generates a jsp view
-     *
-     * @return
-     */
-    @RequestMapping(path = "/createMyEntity", method = {GET, POST})
-    public ModelAndView myActionMethod() {
-        // ModelAndView result = new ModelAndView(“nameOfTheView”);
-        //result.addObject(“myInstance”, myEntityInstance);
-        // return result;
+    @RequestMapping(path = "/productList", method = {GET})
+    public ModelAndView ProductListMethod () {
+        // TODO : implemente me
+        // Grace a Dbutils on recupere la list de tout les produit
+        // on insert cette list dans la vue
+        // on renvoie la vue
         return null;
     }
 }
