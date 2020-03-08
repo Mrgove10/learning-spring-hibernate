@@ -22,21 +22,21 @@ import java.util.zip.DataFormatException;
 /**
  * A servlet to manage the creation of a Product.
  */
-@WebServlet(urlPatterns = { "/createProduct" })
+@WebServlet(urlPatterns = {"/createProduct"})
 public class CreateProductServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     private static final Logger LOGGER = Logger.getLogger(CreateProductServlet.class.getName());
- 
+
     public CreateProductServlet() {
         super();
     }
- 
+
     // Print the view to create a product
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
- 
+
         RequestDispatcher dispatcher = request.getServletContext()
                 .getRequestDispatcher("/WEB-INF/views/createProductView.jsp");
         dispatcher.forward(request, response);
@@ -74,8 +74,8 @@ public class CreateProductServlet extends HttpServlet {
         if (errorString == null) {
             try {
                 try (Connection conn = ConnectionUtils.tryAndGetConnection()) {
-                        DBUtils.insertProduct(product);
-                        conn.commit();
+                    DBUtils.insertProduct(product);
+                    conn.commit();
                 }
             } catch (SQLException e) {
                 errorString = e.getMessage();
@@ -86,7 +86,7 @@ public class CreateProductServlet extends HttpServlet {
         // Save the informations in the request attribute before sending them to the views.
         request.setAttribute("errorString", errorString);
         request.setAttribute("product", viewBean);
- 
+
         // If errors found, forward them to the 'edit' page.
         if (errorString != null) {
             RequestDispatcher dispatcher = request.getServletContext()
@@ -98,5 +98,5 @@ public class CreateProductServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/productList");
         }
     }
- 
+
 }

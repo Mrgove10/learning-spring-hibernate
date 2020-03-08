@@ -1,5 +1,5 @@
 package org.epsi.b3.simplewebapp.db.conn;
- 
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -14,12 +14,13 @@ public class ConnectionUtils {
 
     /**
      * Gets a new connection to the DB.
+     *
      * @return a new DB connection
      * @throws ClassNotFoundException if the JDBC driver cannot be instantiated
-     * @throws SQLException if a SQL error occurred.
+     * @throws SQLException           if a SQL error occurred.
      */
     public static Connection getRawConnection()
-              throws ClassNotFoundException, SQLException {
+            throws ClassNotFoundException, SQLException {
 
         Connection conn = getDriver();
         // Remove the auto-commit of transactions (only commit when explicit).

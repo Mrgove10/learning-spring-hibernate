@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Objects;
-import java.util.zip.DataFormatException;
 
 /**
  * A business object the represents a User account.
@@ -72,7 +71,7 @@ public class UserAccount {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UserAccount that = (UserAccount) o;
-        return Objects.deepEquals(idUser,that.idUser);
+        return Objects.deepEquals(idUser, that.idUser);
     }
 
     @Override

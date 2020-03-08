@@ -10,6 +10,7 @@ public class ProductUtils {
 
     /**
      * A parser to generate a {@link Product} from a {@link ProductViewBean}.
+     *
      * @param viewBean the bean from the view
      * @return the business object that models a product
      * @throws NumberFormatException if the price cannot be parsed correctly

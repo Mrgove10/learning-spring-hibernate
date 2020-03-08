@@ -36,8 +36,9 @@ public class HttpUtils {
      * Stores the connection in the attribute {@link #ATT_NAME_CONNECTION} of a request.
      * Stored information only exist for the request until they are sent to the user browser.
      * <strong>This method has a side effect on the {@code request} param</strong>
+     *
      * @param request the request to update
-     * @param conn the connection to store
+     * @param conn    the connection to store
      */
     public static void storeConnection(ServletRequest request, Connection conn) {
         request.setAttribute(ATT_NAME_CONNECTION, conn);
@@ -45,6 +46,7 @@ public class HttpUtils {
 
     /**
      * Gets the connection stored in the attribute {@link #ATT_NAME_CONNECTION} of a request.
+     *
      * @param request the request to query
      * @return the connection stored
      */
@@ -55,7 +57,8 @@ public class HttpUtils {
     /**
      * Stores the user account in the HTTP session attribute {@link #USER_ACCOUNT_SESSION_ATTRIBUTE}.
      * <strong>This method has a side effect on the {@code session} param</strong>
-     * @param session the session to update
+     *
+     * @param session     the session to update
      * @param loginedUser the user account to store
      */
     public static void storeLoginedUser(HttpSession session, UserInfo loginedUser) {
@@ -65,6 +68,7 @@ public class HttpUtils {
 
     /**
      * Gets user information stored in the attribute {@link #USER_ACCOUNT_SESSION_ATTRIBUTE} of a HTTP session.
+     *
      * @param session the HTTP session to query
      * @return the user account stored
      */
@@ -75,6 +79,7 @@ public class HttpUtils {
     /**
      * Stores the username in the {@link #USERNAME_COOKIE} cookie.
      * <strong>This method has a side effect on the {@code response} param</strong>
+     *
      * @param response the HTTP response with the added cookie
      * @param userName the username to store
      */
@@ -88,6 +93,7 @@ public class HttpUtils {
 
     /**
      * Gets the user name stored in the {@link #USERNAME_COOKIE} cookie of the given request.
+     *
      * @param request the request to query
      * @return the username found if any
      */
@@ -106,6 +112,7 @@ public class HttpUtils {
      * Deletes the username cookie {@link #USERNAME_COOKIE}.
      * This is done by injecting a fake cookie that will expire immediately.
      * <strong>This method has a side effect on the {@code response} param</strong>
+     *
      * @param response the modified response
      */
     public static void deleteUserCookie(HttpServletResponse response) {

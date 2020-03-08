@@ -27,6 +27,7 @@ public class Product {
     public Product() {
 
     }
+
     public Product(String code, String name, Float price) {
         this.code = code;
         this.name = name;
@@ -57,7 +58,7 @@ public class Product {
         this.price = price;
     }
 
-    public void validate() throws DataFormatException {;
+    public void validate() throws DataFormatException {
 
         // The product ID is the literal [a-zA-Z_0-9]
         // with at least one letter

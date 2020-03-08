@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 /**
  * A servlet to manage the deletion of a product.
  */
-@WebServlet(urlPatterns = { "/deleteProduct" })
+@WebServlet(urlPatterns = {"/deleteProduct"})
 public class DeleteProductServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -27,14 +27,14 @@ public class DeleteProductServlet extends HttpServlet {
     public DeleteProductServlet() {
         super();
     }
- 
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String code = request.getParameter("code");
- 
+
         String errorString = null;
- 
+
         try {
             try (Connection conn = ConnectionUtils.tryAndGetConnection()) {
                 DBUtils.deleteProduct(code);
@@ -43,8 +43,8 @@ public class DeleteProductServlet extends HttpServlet {
         } catch (SQLException e) {
             errorString = e.getMessage();
             LOGGER.log(Level.WARNING, "Unable to delete the product with code " + code, e);
-        } 
-         
+        }
+
         // If errors found, forward them to the error page.
         if (errorString != null) {
             // Saving informations in the request attribute before sending them to the views.
@@ -59,13 +59,13 @@ public class DeleteProductServlet extends HttpServlet {
         else {
             response.sendRedirect(request.getContextPath() + "/productList");
         }
- 
+
     }
- 
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         doGet(request, response);
     }
- 
+
 }

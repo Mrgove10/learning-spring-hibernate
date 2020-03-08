@@ -1,29 +1,12 @@
 package org.epsi.b3.simplewebapp.web.login.servlet;
 
-import org.epsi.b3.simplewebapp.db.conn.ConnectionUtils;
-import org.epsi.b3.simplewebapp.db.utils.DBUtils;
-import org.epsi.b3.simplewebapp.users.UserAccount;
-import org.epsi.b3.simplewebapp.web.login.entity.LoginInfo;
-import org.epsi.b3.simplewebapp.web.user.entity.UserInfo;
-import org.epsi.b3.simplewebapp.web.utils.HttpUtils;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * A servlet to manage the login of a user.
  */
-@WebServlet(urlPatterns = { "/login" })
+@WebServlet(urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
  /*   private static final long serialVersionUID = 1L;
 

@@ -2,7 +2,6 @@ package org.epsi.b3.simplewebapp.db.utils;
 
 import org.epsi.b3.simplewebapp.HibernateUtil;
 import org.epsi.b3.simplewebapp.products.Product;
-import org.epsi.b3.simplewebapp.users.Gender;
 import org.epsi.b3.simplewebapp.users.UserAccount;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -12,8 +11,6 @@ import org.hibernate.criterion.Restrictions;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.List;
 
 public class DBUtils {

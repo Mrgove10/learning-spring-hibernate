@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 /**
  * A servlet to manage the deletion of a product.
  */
-@WebServlet(urlPatterns = { "/editProduct" })
+@WebServlet(urlPatterns = {"/editProduct"})
 public class EditProductServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -43,7 +43,7 @@ public class EditProductServlet extends HttpServlet {
         String errorString = null;
 
         try {
-            try(final Connection conn = ConnectionUtils.tryAndGetConnection()) {
+            try (final Connection conn = ConnectionUtils.tryAndGetConnection()) {
                 final Product product = DBUtils.findProduct(code);
                 conn.commit();
                 if (product != null) {
@@ -89,7 +89,7 @@ public class EditProductServlet extends HttpServlet {
 
         try {
             Product product = ProductUtils.parseFromView(viewBean);
-            try(final Connection conn = ConnectionUtils.tryAndGetConnection()) {
+            try (final Connection conn = ConnectionUtils.tryAndGetConnection()) {
                 DBUtils.updateProduct(product);
                 conn.commit();
             }

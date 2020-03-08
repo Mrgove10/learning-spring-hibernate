@@ -15,7 +15,7 @@ import java.io.IOException;
 /**
  * A servlet to show information on the current user.
  */
-@WebServlet(urlPatterns = { "/userInfo" })
+@WebServlet(urlPatterns = {"/userInfo"})
 public class UserInfoServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

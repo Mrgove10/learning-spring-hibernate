@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 /**
  * A filter to store and retrieve the current logged in user in a cookie.
  */
-@WebFilter(filterName = "cookieFilter", urlPatterns = { "/*" })
+@WebFilter(filterName = "cookieFilter", urlPatterns = {"/*"})
 public class CookieFilter implements Filter {
 
     private static final Logger LOGGER = Logger.getLogger(CookieFilter.class.getName());
@@ -54,7 +54,7 @@ public class CookieFilter implements Filter {
         if (!checked) {
             HttpUtils.getUserNameInCookie(req)
                     // userName found - retrieve associated user in DB and store logged in user
-                    .ifPresent( userName -> {
+                    .ifPresent(userName -> {
                         try {
                             try (final Connection conn = ConnectionUtils.tryAndGetConnection()) {
                                 UserAccount userAccount = DBUtils.findUser(userName);

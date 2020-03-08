@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 
 /**
  * A driver to connect to a H2 DB.
+ *
  * @see ConnectionUtils
  */
 public class H2ConnUtils {
@@ -59,7 +60,7 @@ public class H2ConnUtils {
 
     private static void createUserAccountsTable(Connection conn) throws SQLException {
         LOGGER.log(Level.INFO, "Creating table USER_ACCOUNT in H2 DB");
-        String createProductTable =  "CREATE TABLE IF NOT EXISTS `USER_ACCOUNT` (" +
+        String createProductTable = "CREATE TABLE IF NOT EXISTS `USER_ACCOUNT` (" +
                 "idUser INTEGER not NULL AUTO_INCREMENT" +
                 ", userName VARCHAR(255) not NULL" +
                 ", password VARCHAR(255)" +
@@ -68,7 +69,7 @@ public class H2ConnUtils {
                 ")";
         conn.createStatement().executeUpdate(createProductTable);
 
-        String insertUsers =  "INSERT INTO USER_ACCOUNT(idUser, userName, password, gender) VALUES " +
+        String insertUsers = "INSERT INTO USER_ACCOUNT(idUser, userName, password, gender) VALUES " +
                 " (1,'john','doe',0),(2,'alice','bob',1) ";
         conn.createStatement().execute(insertUsers);
     }
